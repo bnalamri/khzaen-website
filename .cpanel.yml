@@ -1,0 +1,7 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home2/omanport/khzaen.com/
+    - /bin/cp -R index.html $DEPLOYPATH
+    - /bin/cp -R styles.css $DEPLOYPATH
+    - /bin/cp -R script.js $DEPLOYPATH
