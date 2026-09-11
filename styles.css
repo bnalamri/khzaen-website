@@ -266,7 +266,7 @@ footer{ background:var(--ink); color:var(--paper); padding-block:44px; }
   .sector-item:nth-child(even){ padding-inline-start:4px; }
   .pipeline-item{ grid-template-columns:44px 1fr; gap:18px; }
   .form-row{ grid-template-columns:1fr; }
-  .hero-motif{ width:80vw; opacity:0.35; top:-4%; }
+  .hero-motif{ display:none; }
 }
 
 /* mobile nav drawer ------------------------------------------------------------ */

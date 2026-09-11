@@ -46,45 +46,47 @@
   <!-- HERO -->
   <section class="hero">
     <svg class="hero-motif" viewBox="0 0 600 560" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <!-- layered wadi / mountain terrace silhouette, Jebel Akhdar inspired -->
+      <!-- organic terrace/wadi contour illustration, Jebel Akhdar inspired -->
       <defs>
-        <linearGradient id="terraceBack" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stop-color="#2A4750"/>
+        <linearGradient id="ridgeBack" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#345761"/>
           <stop offset="100%" stop-color="#16333A"/>
         </linearGradient>
-        <linearGradient id="terraceMid" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stop-color="#3E5C61"/>
+        <linearGradient id="ridgeMid" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#4A6B71"/>
           <stop offset="100%" stop-color="#28454B"/>
         </linearGradient>
-        <linearGradient id="terraceFront" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stop-color="#C08F4E"/>
-          <stop offset="100%" stop-color="#93672F"/>
+        <linearGradient id="ridgeFront" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#C9A05C"/>
+          <stop offset="100%" stop-color="#8C6532"/>
         </linearGradient>
         <radialGradient id="sunGlow" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stop-color="#EFE9DC" stop-opacity="0.9"/>
+          <stop offset="0%" stop-color="#EFE9DC" stop-opacity="0.95"/>
           <stop offset="100%" stop-color="#EFE9DC" stop-opacity="0"/>
         </radialGradient>
       </defs>
 
-      <circle cx="470" cy="90" r="70" fill="url(#sunGlow)"/>
-      <circle cx="470" cy="90" r="26" fill="#EFE9DC" opacity="0.9"/>
+      <circle cx="460" cy="110" r="90" fill="url(#sunGlow)"/>
+      <circle cx="460" cy="110" r="30" fill="#EFE9DC" opacity="0.95"/>
 
-      <!-- back ridge, softest -->
-      <path d="M0,560 L0,360 L60,360 L60,310 L150,310 L150,270 L260,270 L260,230 L380,230 L380,180 L520,180 L520,140 L600,140 L600,560 Z"
-            fill="url(#terraceBack)" opacity="0.85"/>
+      <path d="M0,560 L0,300 C 60,270 110,320 170,290 C 230,260 260,200 330,210 C 400,220 420,160 480,150 C 530,142 560,175 600,160 L600,560 Z"
+            fill="url(#ridgeBack)" opacity="0.55"/>
+      <path d="M0,300 C 60,270 110,320 170,290 C 230,260 260,200 330,210 C 400,220 420,160 480,150 C 530,142 560,175 600,160"
+            fill="none" stroke="#EFE9DC" stroke-opacity="0.25" stroke-width="1.5"/>
 
-      <!-- mid ridge -->
-      <path d="M0,560 L0,420 L50,420 L50,380 L130,380 L130,340 L230,340 L230,300 L340,300 L340,260 L460,260 L460,220 L600,220 L600,560 Z"
-            fill="url(#terraceMid)" opacity="0.92"/>
+      <path d="M0,560 L0,380 C 70,345 130,400 190,365 C 250,330 300,380 370,350 C 430,325 470,270 540,280 C 570,285 585,300 600,295 L600,560 Z"
+            fill="url(#ridgeMid)" opacity="0.8"/>
+      <path d="M0,380 C 70,345 130,400 190,365 C 250,330 300,380 370,350 C 430,325 470,270 540,280 C 570,285 585,300 600,295"
+            fill="none" stroke="#EFE9DC" stroke-opacity="0.2" stroke-width="1.5"/>
 
-      <!-- front terrace, warm tone -->
-      <path d="M0,560 L0,470 L60,470 L60,430 L150,430 L150,390 L260,390 L260,350 L380,350 L380,310 L600,310 L600,560 Z"
-            fill="url(#terraceFront)"/>
-
-      <g stroke="#EFE9DC" stroke-opacity="0.18" stroke-width="1">
-        <line x1="0" y1="500" x2="600" y2="500"/>
-        <line x1="0" y1="530" x2="600" y2="530"/>
-      </g>
+      <path d="M0,560 L0,450 C 80,410 150,460 220,430 C 290,400 340,440 410,415 C 470,395 520,420 600,400 L600,560 Z"
+            fill="url(#ridgeFront)"/>
+      <path d="M0,450 C 80,410 150,460 220,430 C 290,400 340,440 410,415 C 470,395 520,420 600,400"
+            fill="none" stroke="#EFE9DC" stroke-opacity="0.3" stroke-width="1.5"/>
+      <path d="M0,500 C 80,470 150,510 220,485 C 290,460 340,495 410,475 C 470,458 520,478 600,462"
+            fill="none" stroke="#EFE9DC" stroke-opacity="0.22" stroke-width="1"/>
+      <path d="M0,530 C 80,505 150,535 220,515 C 290,495 340,522 410,505 C 470,492 520,508 600,495"
+            fill="none" stroke="#EFE9DC" stroke-opacity="0.18" stroke-width="1"/>
     </svg>
 
     <div class="wrap">
