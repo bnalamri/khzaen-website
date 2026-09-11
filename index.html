@@ -45,14 +45,45 @@
 
   <!-- HERO -->
   <section class="hero">
-    <svg class="hero-motif" viewBox="0 0 600 520" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <!-- stepped wadi / mountain terrace silhouette, Jebel Akhdar inspired -->
-      <polygon points="0,520 0,300 90,300 90,240 190,240 190,190 300,190 300,140 420,140 420,90 520,90 520,60 600,60 600,520" fill="#16333A" opacity="0.9"/>
-      <polygon points="0,520 0,380 70,380 70,340 160,340 160,300 250,300 250,270 350,270 350,230 460,230 460,200 560,200 560,520" fill="#A9793C" opacity="0.55"/>
-      <circle cx="500" cy="70" r="34" fill="#EFE9DC" opacity="0.85"/>
-      <g stroke="#EFE9DC" stroke-opacity="0.25" stroke-width="1">
-        <line x1="0" y1="440" x2="600" y2="440"/>
-        <line x1="0" y1="470" x2="600" y2="470"/>
+    <svg class="hero-motif" viewBox="0 0 600 560" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <!-- layered wadi / mountain terrace silhouette, Jebel Akhdar inspired -->
+      <defs>
+        <linearGradient id="terraceBack" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#2A4750"/>
+          <stop offset="100%" stop-color="#16333A"/>
+        </linearGradient>
+        <linearGradient id="terraceMid" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#3E5C61"/>
+          <stop offset="100%" stop-color="#28454B"/>
+        </linearGradient>
+        <linearGradient id="terraceFront" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#C08F4E"/>
+          <stop offset="100%" stop-color="#93672F"/>
+        </linearGradient>
+        <radialGradient id="sunGlow" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#EFE9DC" stop-opacity="0.9"/>
+          <stop offset="100%" stop-color="#EFE9DC" stop-opacity="0"/>
+        </radialGradient>
+      </defs>
+
+      <circle cx="470" cy="90" r="70" fill="url(#sunGlow)"/>
+      <circle cx="470" cy="90" r="26" fill="#EFE9DC" opacity="0.9"/>
+
+      <!-- back ridge, softest -->
+      <path d="M0,560 L0,360 L60,360 L60,310 L150,310 L150,270 L260,270 L260,230 L380,230 L380,180 L520,180 L520,140 L600,140 L600,560 Z"
+            fill="url(#terraceBack)" opacity="0.85"/>
+
+      <!-- mid ridge -->
+      <path d="M0,560 L0,420 L50,420 L50,380 L130,380 L130,340 L230,340 L230,300 L340,300 L340,260 L460,260 L460,220 L600,220 L600,560 Z"
+            fill="url(#terraceMid)" opacity="0.92"/>
+
+      <!-- front terrace, warm tone -->
+      <path d="M0,560 L0,470 L60,470 L60,430 L150,430 L150,390 L260,390 L260,350 L380,350 L380,310 L600,310 L600,560 Z"
+            fill="url(#terraceFront)"/>
+
+      <g stroke="#EFE9DC" stroke-opacity="0.18" stroke-width="1">
+        <line x1="0" y1="500" x2="600" y2="500"/>
+        <line x1="0" y1="530" x2="600" y2="530"/>
       </g>
     </svg>
 
