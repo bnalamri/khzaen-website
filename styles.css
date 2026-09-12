@@ -256,10 +256,15 @@ html[lang="ar"] .pipeline-num{ font-family:var(--serif-ar); }
 form.contact-form{ display:flex; flex-direction:column; gap:16px; }
 .form-row{ display:grid; grid-template-columns:1fr 1fr; gap:16px; }
 label{ display:block; font-size:0.85rem; color:var(--ink-soft); margin-bottom:6px; }
-input, select, textarea{
+input, textarea{
   width:100%; border:1px solid var(--line); background:transparent;
   padding:12px 14px; border-radius:8px; font-size:0.98rem; color:var(--ink);
   font-family:inherit;
+}
+select{
+  width:100%; border:1px solid var(--line); background:var(--paper);
+  padding:12px 14px; border-radius:8px; font-size:0.98rem; color:var(--ink);
+  font-family:inherit; cursor:pointer;
 }
 input:focus, select:focus, textarea:focus{
   outline:2px solid var(--brass); outline-offset:1px; border-color:var(--brass);
