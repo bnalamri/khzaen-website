@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Oman: Investment Opportunities</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0D2B2E;
+    --ink-2:#123539;
+    --gold:#C9A15C;
+    --sage:#4C7A5D;
+    --sand:#F2EDE4;
+    --sand-dim:#9FB8B8;
+    --line: rgba(242,237,228,0.14);
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;}
+  .oman-reel{
+    font-family:'Inter',sans-serif;
+    background:var(--ink);
+    color:var(--sand);
+    max-width:1100px;
+    margin:0 auto;
+    border-radius:6px;
+    overflow:hidden;
+    position:relative;
+    isolation:isolate;
+  }
+  .reel-frame{
+    position:relative;
+    width:100%;
+    aspect-ratio:16/9;
+    min-height:320px;
+    overflow:hidden;
+    background:var(--ink);
+  }
+  .scene{
+    position:absolute;
+    inset:0;
+    display:flex;
+    align-items:center;
+    padding:6% 7%;
+    opacity:0;
+    visibility:hidden;
+    transform:scale(1.03);
+    transition:opacity 1100ms ease, transform 6500ms linear, visibility 0s linear 1100ms;
+  }
+  .scene.active{
+    opacity:1;
+    visibility:visible;
+    transform:scale(1);
+    transition:opacity 1100ms ease, transform 6500ms linear;
+  }
+  /*
+    ---- SWAP IN A REAL PHOTO HERE ----
+    Each .scene-bg below shows an illustrated placeholder by default so the
+    section always looks finished. To use a real, licensed photograph
+    instead, change that scene's inline style from e.g.
+      style="background-color:#0D2B2E;"
+    to
+      style="background-image:url('images/scene-0.jpg'); background-size:cover; background-position:center;"
+    Keep the .scene-scrim div right after it -- that dark gradient is what
+    keeps the headline text readable on top of a busy photo.
+  */
+  .scene-bg{
+    position:absolute;
+    inset:0;
+    z-index:0;
+    background-size:cover;
+    background-position:center;
+  }
+  .scene-scrim{
+    position:absolute;
+    inset:0;
+    z-index:1;
+    background:linear-gradient(100deg, var(--ink) 6%, rgba(13,43,46,0.88) 34%, rgba(13,43,46,0.55) 58%, rgba(13,43,46,0.22) 100%);
+    pointer-events:none;
+  }
+  .scene-scrim.neutral{
+    background:linear-gradient(100deg, rgba(0,0,0,0.62) 0%, rgba(0,0,0,0.42) 32%, rgba(0,0,0,0.18) 58%, rgba(0,0,0,0.05) 100%);
+  }
+  .scene-inner{max-width:640px; position:relative; z-index:2;}
+  .scene-tag{
+    font-size:12px;
+    font-weight:600;
+    letter-spacing:0.04em;
+    color:var(--gold);
+    margin:0 0 14px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    text-shadow:0 1px 4px rgba(0,0,0,0.7);
+  }
+  .scene-tag .rule{width:28px; height:1px; background:var(--gold); display:inline-block;}
+  .scene h2{
+    font-family:'Fraunces',serif;
+    font-weight:600;
+    font-size:clamp(26px,4vw,46px);
+    line-height:1.12;
+    margin:0 0 16px;
+    color:#FFFFFF;
+    text-shadow:0 2px 6px rgba(0,0,0,0.75), 0 6px 24px rgba(0,0,0,0.55);
+  }
+  .scene p{
+    font-size:clamp(14px,1.6vw,17px);
+    font-weight:500;
+    line-height:1.6;
+    color:#F2EDE4;
+    margin:0 0 8px;
+    max-width:52ch;
+    text-shadow:0 1px 4px rgba(0,0,0,0.7), 0 4px 16px rgba(0,0,0,0.45);
+  }
+  .stat-row{display:flex; gap:clamp(20px,4vw,48px); margin-top:22px; flex-wrap:wrap;}
+  .stat-row .stat b{
+    font-family:'Fraunces',serif;
+    font-size:clamp(20px,2.6vw,30px);
+    font-weight:600;
+    color:#FFFFFF;
+    display:block;
+    text-shadow:0 2px 6px rgba(0,0,0,0.75);
+  }
+  .stat-row .stat span{
+    font-size:12px;
+    font-weight:500;
+    color:#F2EDE4;
+    text-shadow:0 1px 4px rgba(0,0,0,0.7);
+  }
+  .hero-number{
+    font-family:'Fraunces',serif;
+    font-weight:500;
+    font-size:clamp(56px,10vw,120px);
+    line-height:1;
+    color:var(--gold);
+    margin:0 0 6px;
+    text-shadow:0 2px 22px rgba(0,0,0,0.4);
+  }
+  .cta-btn{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    margin-top:26px;
+    padding:12px 22px;
+    border:1px solid var(--gold);
+    color:var(--gold);
+    font-family:'Inter',sans-serif;
+    font-size:14px;
+    font-weight:500;
+    text-decoration:none;
+    border-radius:2px;
+    transition:background 200ms ease, color 200ms ease;
+  }
+  .cta-btn:hover{background:var(--gold); color:var(--ink);}
+  .reel-controls{
+    display:flex;
+    align-items:center;
+    gap:16px;
+    padding:14px 20px;
+    background:var(--ink-2);
+    border-top:1px solid var(--line);
+  }
+  .play-toggle{
+    width:32px; height:32px;
+    border-radius:50%;
+    border:1px solid var(--sand-dim);
+    background:transparent;
+    color:var(--sand);
+    display:flex; align-items:center; justify-content:center;
+    cursor:pointer;
+    flex-shrink:0;
+    padding:0;
+  }
+  .play-toggle:hover{border-color:var(--gold); color:var(--gold);}
+  .filmstrip{
+    flex:1;
+    display:flex;
+    gap:4px;
+  }
+  .frame-btn{
+    flex:1;
+    height:4px;
+    background:var(--line);
+    border:none;
+    cursor:pointer;
+    position:relative;
+    overflow:hidden;
+    padding:0;
+    border-radius:1px;
+  }
+  .frame-btn .fill{
+    position:absolute; inset:0 100% 0 0;
+    background:var(--gold);
+  }
+  .frame-btn.done .fill{inset:0 0 0 0; transition:none;}
+  .scene-count{
+    font-size:12px;
+    color:var(--sand-dim);
+    min-width:44px;
+    text-align:right;
+    flex-shrink:0;
+  }
+  @media (max-width:640px){
+    .stat-row{gap:18px;}
+    .reel-controls{padding:12px 14px; gap:12px;}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .scene{transition:opacity 300ms ease; transform:none;}
+    .scene.active{transition:opacity 300ms ease;}
+  }
+</style>
+</head>
+<body>
+
+<div class="oman-reel" id="omanReel">
+  <div class="reel-frame" id="reelFrame">
+
+    <!-- Scene 0: suggested photo -- Muscat corniche / Old Muscat forts (Al Jalali & Al Mirani) at dusk -->
+    <div class="scene active" data-index="0">
+      <div class="scene-bg" style="background-image:url('images/scene-0.jpg'); background-size:cover; background-position:center;"></div>
+      <div class="scene-scrim neutral"></div>
+      <div class="scene-inner">
+        <p class="scene-tag"><span class="rule"></span>Sultanate of Oman</p>
+        <h2>Where three continents meet</h2>
+        <p>A stable, open economy on the coast of Asia, Africa and Europe &mdash; positioned as the Gulf's next investment frontier.</p>
+      </div>
+    </div>
+
+    <!-- Scene 1: REAL PHOTO -- "Nizwa Fort and Minaret of Friday Mosque" by Martin Falbisoner
+         Source: https://commons.wikimedia.org/wiki/File:Nizwa_Fort_and_Minaret_of_Friday_Mosque.JPG
+         License: CC BY-SA 4.0 -- credit "Martin Falbisoner, CC BY-SA 4.0" if you display credits anywhere on the site.
+         For production, download this once and self-host it in your images/ folder instead of
+         hotlinking Wikimedia's server long-term. -->
+    <div class="scene" data-index="1">
+      <div class="scene-bg" style="background-image:url('images/scene-1.jpg'); background-size:cover; background-position:center;"></div>
+      <div class="scene-scrim neutral"></div>
+      <div class="scene-inner">
+        <p class="scene-tag"><span class="rule"></span>Vision 2040</p>
+        <div class="hero-number">$31B</div>
+        <p>Committed to tourism development alone by 2040, lifting its share of GDP from 2.6% to 6%.</p>
+        <div class="stat-row">
+          <div class="stat"><b>12M</b><span>Visitor target by 2040</span></div>
+          <div class="stat"><b>500K+</b><span>New jobs projected</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scene 2: suggested photo -- Sohar or Duqm port, cranes and container terminal -->
+    <div class="scene" data-index="2">
+      <div class="scene-bg" style="background-image:url('images/scene-2.jpg'); background-size:cover; background-position:center;"></div>
+      <div class="scene-scrim neutral"></div>
+      <div class="scene-inner">
+        <p class="scene-tag"><span class="rule"></span>Logistics &amp; trade</p>
+        <h2>Ports built for global reach</h2>
+        <p>Duqm, Sohar and Salalah connect Omani industry to Asia, Africa and Europe outside the Strait of Hormuz &mdash; a rare logistical advantage in the region.</p>
+        <div class="stat-row">
+          <div class="stat"><b>$780M</b><span>Sohar pipeline, 2026</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scene 3: suggested photo -- solar panels or wind turbines in the Omani desert -->
+    <div class="scene" data-index="3">
+      <div class="scene-bg" style="background-image:url('images/scene-3.jpg'); background-size:cover; background-position:center;"></div>
+      <div class="scene-scrim neutral"></div>
+      <div class="scene-inner">
+        <p class="scene-tag"><span class="rule"></span>Energy transition</p>
+        <h2>A future built on green hydrogen</h2>
+        <p>50,000 square kilometres earmarked for hydrogen projects, targeting a position as a leading low-emissions hydrogen supplier by 2030.</p>
+      </div>
+    </div>
+
+    <!-- Scene 4: suggested photo -- Sohar/Salalah free zone factories, or a shot with young Omani professionals -->
+    <div class="scene" data-index="4">
+      <div class="scene-bg" style="background-image:url('images/scene-4.jpg'); background-size:cover; background-position:center;"></div>
+      <div class="scene-scrim neutral"></div>
+      <div class="scene-inner">
+        <p class="scene-tag"><span class="rule"></span>Industry &amp; digital economy</p>
+        <h2>Free zones, factories and a young digital workforce</h2>
+        <p>Sohar and Salalah free zones anchor mining, petrochemicals and manufacturing, while a population that is over 60% under 30 drives digital-sector growth above 10% a year.</p>
+        <div class="stat-row">
+          <div class="stat"><b>100K+</b><span>Digital-sector jobs forecast</span></div>
+          <div class="stat"><b>60%+</b><span>Population under 30</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scene 5: suggested photo -- Wahiba Sands dunes at sunset -->
+    <div class="scene" data-index="5">
+      <div class="scene-bg" style="background-image:url('images/scene-5.jpg'); background-size:cover; background-position:center;"></div>
+      <div class="scene-scrim neutral"></div>
+      <div class="scene-inner">
+        <p class="scene-tag"><span class="rule"></span>Why invest through Khzaen</p>
+        <h2>Built for investors who move early</h2>
+        <p>100% foreign ownership in most sectors, Golden Residency for qualifying investors, and free-zone incentives designed to reward long-term commitment.</p>
+        <a href="#contact" class="cta-btn">Partner with Khzaen International Investment</a>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="reel-controls">
+    <button class="play-toggle" id="playToggle" aria-label="Pause">
+      <svg id="iconPause" width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="1" y="0.5" width="3.2" height="11" fill="currentColor"/><rect x="7.5" y="0.5" width="3.2" height="11" fill="currentColor"/></svg>
+      <svg id="iconPlay" width="12" height="12" viewBox="0 0 12 12" fill="none" style="display:none; margin-left:2px;"><path d="M1 0.7 L11 6 L1 11.3 Z" fill="currentColor"/></svg>
+    </button>
+    <div class="filmstrip" id="filmstrip"></div>
+    <div class="scene-count" id="sceneCount">01 / 06</div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var scenes = document.querySelectorAll('#reelFrame .scene');
+  var total = scenes.length;
+  var strip = document.getElementById('filmstrip');
+  var countLabel = document.getElementById('sceneCount');
+  var playToggle = document.getElementById('playToggle');
+  var iconPlay = document.getElementById('iconPlay');
+  var iconPause = document.getElementById('iconPause');
+  var current = 0;
+  var playing = true;
+  var duration = 6500;
+  var timer = null;
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  for (var i = 0; i < total; i++) {
+    var btn = document.createElement('button');
+    btn.className = 'frame-btn';
+    btn.setAttribute('aria-label', 'Go to scene ' + (i + 1));
+    var fill = document.createElement('span');
+    fill.className = 'fill';
+    btn.appendChild(fill);
+    strip.appendChild(btn);
+  }
+  var frameBtns = strip.querySelectorAll('.frame-btn');
+
+  function pad(n){ return n < 10 ? '0' + n : '' + n; }
+
+  function render(){
+    scenes.forEach(function(s, i){ s.classList.toggle('active', i === current); });
+    frameBtns.forEach(function(b, i){
+      b.classList.toggle('done', i < current);
+      var fill = b.querySelector('.fill');
+      if (i < current) { fill.style.transition = 'none'; fill.style.inset = '0 0 0 0'; }
+      else if (i > current) { fill.style.transition = 'none'; fill.style.inset = '0 100% 0 0'; }
+    });
+    countLabel.textContent = pad(current + 1) + ' / ' + pad(total);
+  }
+
+  function startFill(){
+    var b = frameBtns[current];
+    var fill = b.querySelector('.fill');
+    fill.style.transition = 'none';
+    fill.style.inset = '0 100% 0 0';
+    void fill.offsetWidth;
+    fill.style.transition = 'inset ' + duration + 'ms linear';
+    fill.style.inset = '0 0 0 0';
+  }
+
+  /* The loop: a single setInterval calls tick() forever, on a fixed
+     cadence that never gets cleared or re-created while playing. tick()
+     wraps the index with modulo, so scene (total - 1) rolls straight
+     back to scene 0 -- the reel runs indefinitely with no end state,
+     no click, and nothing for a browser to block, since there is no
+     <video>/<audio> element involved anywhere. Manually jumping via the
+     filmstrip just re-syncs the same interval to the new starting point. */
+  function goTo(nextIndex){
+    current = ((nextIndex % total) + total) % total;
+    render();
+    if (playing) { startFill(); }
+  }
+
+  function tick(){
+    goTo(current + 1);
+  }
+
+  function startTimer(){
+    stopTimer();
+    if (!reduceMotion) { timer = setInterval(tick, duration); }
+  }
+
+  function stopTimer(){
+    if (timer) { clearInterval(timer); timer = null; }
+  }
+
+  function jumpTo(i){
+    goTo(i);
+    if (playing) { startTimer(); }
+  }
+
+  for (var j = 0; j < frameBtns.length; j++) {
+    (function(idx){
+      frameBtns[idx].onclick = function(){ jumpTo(idx); };
+    })(j);
+  }
+
+  function setPlaying(state){
+    playing = state;
+    iconPlay.style.display = playing ? 'none' : 'block';
+    iconPause.style.display = playing ? 'block' : 'none';
+    playToggle.setAttribute('aria-label', playing ? 'Pause' : 'Play');
+    if (playing) {
+      startFill();
+      startTimer();
+    } else {
+      stopTimer();
+      var fill = frameBtns[current].querySelector('.fill');
+      var rect = fill.getBoundingClientRect();
+      var parentRect = fill.parentElement.getBoundingClientRect();
+      var progress = parentRect.width ? (rect.width / parentRect.width) : 0;
+      fill.style.transition = 'none';
+      fill.style.inset = '0 ' + (100 - progress * 100) + '% 0 0';
+    }
+  }
+
+  playToggle.addEventListener('click', function(){ setPlaying(!playing); });
+
+  render();
+  if (reduceMotion) {
+    setPlaying(false);
+  } else {
+    startFill();
+    startTimer();
+  }
+})();
+</script>
+
+</body>
+</html>

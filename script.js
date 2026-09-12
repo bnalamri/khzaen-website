@@ -55,4 +55,28 @@
       translateSelectOptions(lang);
     });
   }
+
+  // Hero photo rotator
+  var heroPhotos = document.querySelectorAll('.hero-photo');
+  var heroTag = document.getElementById('heroPhotoTag');
+  if (heroPhotos.length) {
+    var heroIndex = 0;
+    var heroReduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    function showHeroPhoto(i) {
+      Array.prototype.forEach.call(heroPhotos, function (img, n) {
+        img.classList.toggle('is-active', n === i);
+      });
+      if (heroTag) {
+        Array.prototype.forEach.call(heroTag.querySelectorAll('[data-tag]'), function (el) {
+          el.hidden = el.getAttribute('data-tag') !== String(i);
+        });
+      }
+    }
+    if (!heroReduceMotion) {
+      setInterval(function () {
+        heroIndex = (heroIndex + 1) % heroPhotos.length;
+        showHeroPhoto(heroIndex);
+      }, 4500);
+    }
+  }
 })();
