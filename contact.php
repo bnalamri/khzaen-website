@@ -43,6 +43,9 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
 $role_labels = [
     'investor' => 'Investor',
     'project'  => 'Project owner',
+    'government' => 'Government / public sector',
+    'media'    => 'Media / press',
+    'service'  => 'Service provider / consultant',
     'other'    => 'Other',
 ];
 $role_label = $role_labels[$role] ?? 'Not specified';
