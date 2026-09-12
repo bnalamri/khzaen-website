@@ -1,0 +1,37 @@
+name: Deploy to Bluehost
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch: {}   # lets you trigger a deploy manually from the Actions tab
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install deploy SSH key
+        uses: webfactory/ssh-agent@v0.9.0
+        with:
+          ssh-private-key: ${{ secrets.BLUEHOST_DEPLOY_KEY }}
+
+      - name: Trust Bluehost's host key
+        run: |
+          mkdir -p ~/.ssh
+          ssh-keyscan -p 2222 162.241.244.121 >> ~/.ssh/known_hosts
+
+      - name: Sync files to Bluehost
+        run: |
+          rsync -avz --delete \
+            -e "ssh -p 2222" \
+            --exclude='.git/' \
+            --exclude='.github/' \
+            --exclude='.gitignore' \
+            --exclude='README.md' \
+            --exclude='.well-known/' \
+            --exclude='cgi-bin/' \
+            --exclude='*.php' \
+            ./ omanport@162.241.244.121:/home2/omanport/khzaen.com/
