@@ -25,7 +25,6 @@ function clean_field($value) {
 
 $name    = clean_field($_POST['name'] ?? '');
 $email   = clean_field($_POST['email'] ?? '');
-$role    = clean_field($_POST['role'] ?? '');
 $message = trim($_POST['message'] ?? ''); // body text, newlines are fine here
 
 if ($name === '' || $email === '' || $message === '') {
@@ -48,7 +47,20 @@ $role_labels = [
     'service'  => 'Service provider / consultant',
     'other'    => 'Other',
 ];
-$role_label = $role_labels[$role] ?? 'Not specified';
+
+$submitted_roles = $_POST['role'] ?? [];
+if (!is_array($submitted_roles)) {
+    $submitted_roles = [$submitted_roles];
+}
+
+$role_display = [];
+foreach ($submitted_roles as $r) {
+    $r = clean_field($r);
+    if (isset($role_labels[$r])) {
+        $role_display[] = $role_labels[$r];
+    }
+}
+$role_label = $role_display ? implode(', ', $role_display) : 'Not specified';
 
 $to      = 'info@khzaen.com';
 $subject = 'New website inquiry from ' . $name . ' (' . $role_label . ')';

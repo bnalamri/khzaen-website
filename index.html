@@ -284,17 +284,38 @@
           </div>
         </div>
 
-        <div>
-          <label for="role"><span data-en>I am a...</span><span data-ar>أنا...</span></label>
-          <select id="role" name="role">
-            <option value="investor" data-en="Investor" data-ar="مستثمر">Investor</option>
-            <option value="project" data-en="Project owner" data-ar="صاحب مشروع">Project owner</option>
-            <option value="government" data-en="Government / public sector" data-ar="الحكومة / القطاع العام">Government / public sector</option>
-            <option value="media" data-en="Media / press" data-ar="الإعلام / الصحافة">Media / press</option>
-            <option value="service" data-en="Service provider / consultant" data-ar="مزود خدمة / استشاري">Service provider / consultant</option>
-            <option value="other" data-en="Other" data-ar="أخرى">Other</option>
-          </select>
-        </div>
+        <fieldset class="role-group">
+          <legend>
+            <span data-en>I am a...</span><span data-ar>أنا...</span>
+            <span class="role-hint"><span data-en> (select all that apply)</span><span data-ar> (اختر كل ما ينطبق)</span></span>
+          </legend>
+          <div class="role-options">
+            <label class="role-option">
+              <input type="checkbox" name="role[]" value="investor">
+              <span data-en>Investor</span><span data-ar>مستثمر</span>
+            </label>
+            <label class="role-option">
+              <input type="checkbox" name="role[]" value="project">
+              <span data-en>Project owner</span><span data-ar>صاحب مشروع</span>
+            </label>
+            <label class="role-option">
+              <input type="checkbox" name="role[]" value="government">
+              <span data-en>Government / public sector</span><span data-ar>الحكومة / القطاع العام</span>
+            </label>
+            <label class="role-option">
+              <input type="checkbox" name="role[]" value="media">
+              <span data-en>Media / press</span><span data-ar>الإعلام / الصحافة</span>
+            </label>
+            <label class="role-option">
+              <input type="checkbox" name="role[]" value="service">
+              <span data-en>Service provider / consultant</span><span data-ar>مزود خدمة / استشاري</span>
+            </label>
+            <label class="role-option">
+              <input type="checkbox" name="role[]" value="other">
+              <span data-en>Other</span><span data-ar>أخرى</span>
+            </label>
+          </div>
+        </fieldset>
 
         <div>
           <label for="message"><span data-en>Message</span><span data-ar>الرسالة</span></label>
