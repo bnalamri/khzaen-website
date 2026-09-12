@@ -33,5 +33,4 @@ jobs:
             --exclude='README.md' \
             --exclude='.well-known/' \
             --exclude='cgi-bin/' \
-            --exclude='*.php' \
             ./ omanport@162.241.244.121:/home2/omanport/khzaen.com/

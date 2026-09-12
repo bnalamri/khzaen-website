@@ -45,14 +45,54 @@
   });
 
   if (form) {
+    var submitBtn = form.querySelector('button[type="submit"]');
+
+    var messages = {
+      sending: {
+        en: 'Sending…',
+        ar: 'جارٍ الإرسال…'
+      },
+      success: {
+        en: 'Thank you. We will be in touch shortly.',
+        ar: 'شكرًا لك. سنعاود التواصل معك قريبًا.'
+      },
+      error: {
+        en: 'Something went wrong sending your message. Please email us directly at info@khzaen.com.',
+        ar: 'حدث خطأ أثناء إرسال رسالتك. يرجى مراسلتنا مباشرة على info@khzaen.com.'
+      }
+    };
+
     form.addEventListener('submit', function (e) {
       e.preventDefault();
-      var lang = html.getAttribute('lang');
-      formNote.textContent = lang === 'ar'
-        ? 'شكرًا لك. سنعاود التواصل معك قريبًا. (يحتاج هذا النموذج إلى ربطه بخدمة بريد أو نظام فعلي لإرسال الرسائل.)'
-        : 'Thank you. We will be in touch shortly. (This form needs to be connected to an email service or backend to actually send messages.)';
-      form.reset();
-      translateSelectOptions(lang);
+      var lang = html.getAttribute('lang') === 'ar' ? 'ar' : 'en';
+
+      formNote.textContent = messages.sending[lang];
+      if (submitBtn) submitBtn.disabled = true;
+
+      fetch('contact.php', {
+        method: 'POST',
+        body: new FormData(form)
+      })
+        .then(function (response) {
+          return response.json().then(function (data) {
+            return { ok: response.ok, data: data };
+          });
+        })
+        .then(function (result) {
+          if (result.ok && result.data && result.data.success) {
+            formNote.textContent = messages.success[lang];
+            form.reset();
+            translateSelectOptions(lang);
+          } else {
+            formNote.textContent = messages.error[lang];
+          }
+        })
+        .catch(function () {
+          formNote.textContent = messages.error[lang];
+        })
+        .finally(function () {
+          if (submitBtn) submitBtn.disabled = false;
+        });
     });
   }
 
